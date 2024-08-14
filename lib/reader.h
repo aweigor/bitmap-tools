@@ -3,5 +3,5 @@
 class Reader
 {
   public:
-    BmpObject readFile(char ** filename);
+    BmpObject readFromFile(char * path);
 };

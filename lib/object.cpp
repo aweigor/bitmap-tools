@@ -6,12 +6,9 @@ BmpObject::BmpObject(HEADER header, INFOHEADER infoHeader) {
 }
 
 HEADER BmpObject::getHeader() const {
-  HEADER h = {};
-  return h;
+  return _header;
 };
 
 INFOHEADER BmpObject::getInfoHeader() const {
-  INFOHEADER ih = {};
-  return ih;
-}
-  
+  return _infoHeader;
+} 

@@ -1,4 +1,4 @@
-CFLAGS	= -Wall -W -Werror -O2
+CFLAGS	= -Wall -W -Werror -O2 -std=c++17
 LDFLAGS	=
 
 HEADERS	= lib/reader.h \

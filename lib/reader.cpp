@@ -1,14 +1,30 @@
 #include "reader.h"
 #include <iostream>
+#include <fstream>
+#include <filesystem>
 
-BmpObject Reader::readFile(char ** fileName) 
+namespace fs = std::filesystem;
+
+BmpObject Reader::readFromFile(char * path) 
 {
-  HEADER header = {};
-  INFOHEADER infoHeader = {};
+  HEADER bmpFileHeader;
+  INFOHEADER bmpInfoHeader;
 
-  std::cout << fileName << "\n";
+  if (path) 
+  {
+    std::cout << path << "\n";
+    assert(fs::exists(path));
+    std::ifstream file(path, std::ios::binary);
+    if (file.is_open())
+    {
+      file.seekg(0, std::ios::beg);
+      file.read(reinterpret_cast<char*>(&bmpFileHeader), sizeof bmpFileHeader);
+      
+      file.close();
+    }
+  }
 
-  BmpObject obj = BmpObject(header, infoHeader); 
+  BmpObject obj = BmpObject(bmpFileHeader, bmpInfoHeader); 
   return obj;
 }
 
